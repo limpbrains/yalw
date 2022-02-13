@@ -60,9 +60,6 @@ const Home = ({navigation}) => {
       </View>
 
       <View style={styles.float}>
-        <Pressable style={styles.fbutton} onPress={() => {}}>
-          <Text>Home</Text>
-        </Pressable>
         <Pressable
           style={styles.fbutton}
           onPress={() => navigation.navigate('Recieve')}

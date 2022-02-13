@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {
+  Button,
+  LayoutAnimation,
   SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
-  View,
   TextInput,
-  Button,
+  View,
+  useColorScheme,
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 
@@ -47,7 +48,9 @@ const Recieve = ({navigation}) => {
             <Text>Transaction note</Text>
             <Button
               title="Send"
-              onPress={() => {
+              onPress={async () => {
+                navigation.goBack();
+                await new Promise(resolve => setTimeout(resolve, 300));
                 dispatch(
                   actions.transactions.add({
                     id: Math.random(),
@@ -56,8 +59,9 @@ const Recieve = ({navigation}) => {
                     value: amount,
                   }),
                 );
-
-                navigation.goBack();
+                LayoutAnimation.configureNext(
+                  LayoutAnimation.Presets.easeInEaseOut,
+                );
               }}
             />
           </>
