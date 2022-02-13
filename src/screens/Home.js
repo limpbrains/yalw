@@ -14,13 +14,13 @@ import actions from '../store/actions';
 
 const Home = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const ldk = useSelector(state => state.ldk);
+  const lnd = useSelector(state => state.lnd);
   const dispatch = useDispatch();
 
-  console.info('ldk', ldk);
+  console.info('lnd', lnd);
 
   useEffect(() => {
-    dispatch(actions.ldk.getInfo());
+    dispatch(actions.lnd.getInfo());
   }, [dispatch]);
 
   return (

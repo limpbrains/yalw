@@ -1,4 +1,4 @@
-import {LDK_STARTED, LDK_INFO, LDK_STATE} from '../constants';
+import {LND_STARTED, LND_INFO, LND_STATE} from '../constants';
 
 const INITIAL_STATE = {
   running: null,
@@ -6,13 +6,13 @@ const INITIAL_STATE = {
   state: null,
 };
 
-export default function ldk(state = INITIAL_STATE, action) {
+export default function lnd(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case LDK_STARTED:
+    case LND_STARTED:
       return {...state, running: action.running};
-    case LDK_INFO:
+    case LND_INFO:
       return {...state, info: action.info};
-    case LDK_STATE:
+    case LND_STATE:
       return {...state, state: action.value};
     default:
       return state;

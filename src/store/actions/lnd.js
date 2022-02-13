@@ -1,4 +1,4 @@
-import {LDK_STARTED, LDK_INFO, LDK_STATE} from '../constants';
+import {LND_STARTED, LND_INFO, LND_STATE} from '../constants';
 
 import lnd, {
   ENetworks,
@@ -15,8 +15,6 @@ const lndConf = new LndConf('testnet', {
   },
 });
 
-let LND;
-
 export function start() {
   return async function (dispatch) {
     const res = await lnd.start(lndConf);
@@ -26,18 +24,16 @@ export function start() {
       console.error(res.error);
 
       dispatch({
-        type: LDK_STARTED,
+        type: LND_STARTED,
         running: false,
       });
       return;
     }
 
-    await Native.unlockWallet('password');
-
     // await new Promise(resolve => setTimeout(resolve, 10000));
 
     dispatch({
-      type: LDK_STARTED,
+      type: LND_STARTED,
       running: true,
     });
 
@@ -46,7 +42,7 @@ export function start() {
       if (res.isOk()) {
         console.log('subscribe', res.value);
         dispatch({
-          type: LDK_STATE,
+          type: LND_STATE,
           value: res.value,
         });
       }
@@ -64,7 +60,7 @@ export function getInfo() {
     console.warn('res', res);
 
     dispatch({
-      type: LDK_INFO,
+      type: LND_INFO,
       info: res,
     });
   };

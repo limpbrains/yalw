@@ -1,5 +1,5 @@
-import * as ldk from './ldk';
+import * as lnd from './lnd';
 
 export default {
-  ldk,
+  lnd,
 };

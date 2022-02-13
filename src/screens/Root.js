@@ -6,15 +6,15 @@ import actions from '../store/actions';
 import Home from './Home';
 
 const Root = () => {
-  const ldk = useSelector(state => state.ldk);
+  const lnd = useSelector(state => state.lnd);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.ldk.start());
+    dispatch(actions.lnd.start());
   }, [dispatch]);
 
   // starting in progress
-  if (ldk.running === null) {
+  if (lnd.running === null) {
     return (
       <View style={[styles.center]}>
         <ActivityIndicator size="large" />

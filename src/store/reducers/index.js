@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 
-import ldk from './ldk';
+import lnd from './lnd';
 
 export default combineReducers({
-  ldk,
+  lnd,
 });
