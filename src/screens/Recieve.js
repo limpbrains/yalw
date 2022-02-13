@@ -15,11 +15,11 @@ import actions from '../store/actions';
 import Transaction from '../components/Transaction';
 import Money from '../components/Money';
 
-const Recieve = () => {
+const Recieve = ({ navigation }) => {
   const isDarkMode = useColorScheme() === 'dark';
   const dispatch = useDispatch();
   const [fistStep, setFirstStep] = useState(true);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('0');
   const [note, setNote] = useState('');
 
   return (
@@ -57,7 +57,16 @@ const Recieve = () => {
             />
           </>
         ) : (
-          <></>
+          <>
+            <View style={styles.center}>
+              <Text>QRCODE</Text>
+              <Text>lntb1u1pwz5w78pp5e8w8cr5c30xzws92v36sk45znhjn098rtc4pea6ertnmvu25ng3sdpywd6hyetyvf5hgueqv3jk6meqd9h8vmmfvdjsxqrrssy29mzkzjfq27u67evzu893heqex737dhcapvcuantkztg6pnk77nrm72y7z0rs47wzc09vcnugk2ve6sr2ewvcrtqnh3yttv847qqvqpvv398</Text>
+            </View>
+            <Button
+              title="Close"
+              onPress={() => navigation.goBack()}
+            />
+          </>
         )}
       </View>
     </SafeAreaView>
