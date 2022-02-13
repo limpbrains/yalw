@@ -1,4 +1,10 @@
-import {LND_STARTED, LND_INFO, LND_STATE} from '../constants';
+import {
+  LND_STARTED,
+  LND_INFO,
+  LND_STATE,
+  LND_BALANCE,
+  LND_SYNCH_PROGRESS,
+} from '../constants';
 
 import lnd, {
   ENetworks,
@@ -36,12 +42,12 @@ export function start() {
     });
 
     // subscribe to lnd state updates
-    lnd.stateService.subscribeToStateChanges(res => {
-      if (res.isOk()) {
-        console.log('subscribe', res.value);
+    lnd.stateService.subscribeToStateChanges(r => {
+      if (r.isOk()) {
+        console.log('subscribe', r.value);
         dispatch({
           type: LND_STATE,
-          value: res.value,
+          value: r.value,
         });
       }
     });
@@ -60,5 +66,21 @@ export function getInfo() {
       type: LND_INFO,
       info: res,
     });
+  };
+}
+
+export function mockBalanceProgress() {
+  return async function (dispatch) {
+    for (let i = 0; i <= 100; i += 10) {
+      dispatch({
+        type: LND_BALANCE,
+        value: i * 5,
+      });
+      dispatch({
+        type: LND_SYNCH_PROGRESS,
+        value: i,
+      });
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
   };
 }
