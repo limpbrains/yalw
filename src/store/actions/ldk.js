@@ -1,4 +1,4 @@
-import {LDK_STARTED} from '../constants';
+import {LDK_STARTED, LDK_INFO} from '../constants';
 
 import lnd, {
   ENetworks,
@@ -6,7 +6,14 @@ import lnd, {
   ss_lnrpc,
 } from '@synonymdev/react-native-lightning';
 
-const lndConf = new LndConf(ENetworks.regtest);
+const lndConf = new LndConf('testnet', {
+  'Application Options': {
+    alias: 'Synonym Test',
+  },
+  Neutrino: {
+    'neutrino.connect': '35.240.72.95:18333',
+  },
+});
 
 let ldk;
 
@@ -28,6 +35,22 @@ export function start() {
     dispatch({
       type: LDK_STARTED,
       running: true,
+    });
+  };
+}
+
+export function getInfo() {
+  return async function (dispatch) {
+    const res = await lnd.getInfo();
+
+    if (res.isErr()) {
+      return console.error('ERRRRRR', res.error);
+    }
+    console.warn('res', res);
+
+    dispatch({
+      type: LDK_INFO,
+      info: res,
     });
   };
 }
