@@ -1,15 +1,14 @@
 import React, {useEffect} from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import actions from '../store/actions';
 import Home from './Home';
-
+import Recieve from './Recieve';
 
 const Stack = createNativeStackNavigator();
-
 
 const Root = () => {
   const lnd = useSelector(state => state.lnd);
@@ -30,12 +29,20 @@ const Root = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator >
-        <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Recieve"
+          component={Recieve}
+          options={{headerShown: false, presentation: 'modal'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
-
 };
 
 const styles = StyleSheet.create({

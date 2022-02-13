@@ -7,6 +7,7 @@ import {
   useColorScheme,
   View,
   FlatList,
+  Pressable,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -14,7 +15,7 @@ import actions from '../store/actions';
 import Transaction from '../components/Transaction';
 import Money from '../components/Money';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
   const dispatch = useDispatch();
   const lnd = useSelector(state => state.lnd);
@@ -35,7 +36,7 @@ const Home = () => {
   );
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.root}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
 
       <View>
@@ -55,15 +56,43 @@ const Home = () => {
           keyExtractor={item => item.id}
         />
       </View>
+
+      <View style={styles.float}>
+        <Pressable style={styles.fbutton} onPress={() => {}}>
+          <Text>Home</Text>
+        </Pressable>
+        <Pressable
+          style={styles.fbutton}
+          onPress={() => navigation.navigate('Recieve')}
+        >
+          <Text>Recieve</Text>
+        </Pressable>
+        <Pressable style={styles.fbutton} onPress={() => {}}>
+          <Text>Send</Text>
+        </Pressable>
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
   title: {
     fontWeight: '700',
     marginVertical: 30,
     marginHorizontal: 10,
+  },
+  float: {
+    backgroundColor: 'grey',
+    position: 'absolute',
+    bottom: 30,
+    alignSelf: 'center',
+    flexDirection: 'row',
+  },
+  fbutton: {
+    padding: 10,
   },
 });
 
