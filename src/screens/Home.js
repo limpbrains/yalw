@@ -7,6 +7,7 @@ import {
   Text,
   useColorScheme,
   View,
+  Button,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -14,10 +15,7 @@ import actions from '../store/actions';
 
 const Home = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const lnd = useSelector(state => state.lnd);
   const dispatch = useDispatch();
-
-  console.info('lnd', lnd);
 
   useEffect(() => {
     dispatch(actions.lnd.getInfo());
@@ -30,6 +28,10 @@ const Home = () => {
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View>
           <Text style={styles.title}>Wallet</Text>
+          <Button
+            title="getInfo"
+            onPress={() => dispatch(actions.lnd.getInfo())}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

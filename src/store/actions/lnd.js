@@ -30,8 +30,6 @@ export function start() {
       return;
     }
 
-    // await new Promise(resolve => setTimeout(resolve, 10000));
-
     dispatch({
       type: LND_STARTED,
       running: true,
@@ -55,9 +53,8 @@ export function getInfo() {
     const res = await lnd.getInfo();
 
     if (res.isErr()) {
-      return console.error('ERRRRRR', res.error);
+      return console.error('getInfo error', res.error);
     }
-    console.warn('res', res);
 
     dispatch({
       type: LND_INFO,
