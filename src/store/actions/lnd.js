@@ -53,7 +53,7 @@ export function getInfo() {
     const res = await lnd.getInfo();
 
     if (res.isErr()) {
-      throw res.error
+      throw res.error;
     }
 
     dispatch({

@@ -9,7 +9,7 @@ import {
   View,
   Button,
 } from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 import actions from '../store/actions';
 
