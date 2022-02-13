@@ -7,6 +7,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import actions from '../store/actions';
 import Home from './Home';
 import Recieve from './Recieve';
+import Send from './Send';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,11 @@ const Root = () => {
         <Stack.Screen
           name="Recieve"
           component={Recieve}
+          options={{headerShown: false, presentation: 'modal'}}
+        />
+        <Stack.Screen
+          name="Send"
+          component={Send}
           options={{headerShown: false, presentation: 'modal'}}
         />
       </Stack.Navigator>

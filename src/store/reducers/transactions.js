@@ -38,7 +38,7 @@ const INITIAL_STATE = {
 export default function lnd(state = INITIAL_STATE, action) {
   switch (action.type) {
     case TX_ADD:
-      return {...state, list: [...state.list, action.value]};
+      return {...state, list: [action.value, ...state.list]};
     default:
       return state;
   }

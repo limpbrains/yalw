@@ -21,6 +21,8 @@ const Home = ({navigation}) => {
   const lnd = useSelector(state => state.lnd);
   const transactions = useSelector(state => state.transactions);
 
+  console.info('transactions', transactions);
+
   useEffect(() => {
     // dispatch(actions.lnd.getInfo());
     dispatch(actions.lnd.mockBalanceProgress());
@@ -67,7 +69,10 @@ const Home = ({navigation}) => {
         >
           <Text>Recieve</Text>
         </Pressable>
-        <Pressable style={styles.fbutton} onPress={() => {}}>
+        <Pressable
+          style={styles.fbutton}
+          onPress={() => navigation.navigate('Send')}
+        >
           <Text>Send</Text>
         </Pressable>
       </View>

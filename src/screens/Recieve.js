@@ -9,15 +9,11 @@ import {
   TextInput,
   Button,
 } from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
 
-import actions from '../store/actions';
-import Transaction from '../components/Transaction';
 import Money from '../components/Money';
 
 const Recieve = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
-  const dispatch = useDispatch();
   const [fistStep, setFirstStep] = useState(true);
   const [amount, setAmount] = useState('0');
   const [note, setNote] = useState('');

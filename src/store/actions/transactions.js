@@ -1,5 +1,5 @@
 import {TX_ADD} from '../constants';
 
-export function addTransaction(tx) {
+export function add(tx) {
   return {type: TX_ADD, value: tx};
 }
