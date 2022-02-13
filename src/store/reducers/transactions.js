@@ -4,31 +4,31 @@ const INITIAL_STATE = {
   list: [
     {
       id: 1,
-      date: 123123123123,
+      date: 1644753037,
       status: 'pending',
       value: 100500,
     },
     {
       id: 2,
-      date: 123123123123,
+      date: 1644753037,
       status: 'recieved',
       value: 100500,
     },
     {
       id: 3,
-      date: 123123123123,
+      date: 1644753037,
       status: 'sent',
       value: 100500,
     },
     {
       id: 4,
-      date: 123123123123,
+      date: 1644753037,
       status: 'pending',
       value: 100500,
     },
     {
       id: 5,
-      date: 123123123123,
+      date: 1644753037,
       status: 'recieved',
       value: 100500,
     },

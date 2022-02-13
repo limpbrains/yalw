@@ -1,5 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Text, TouchableOpacity, StyleSheet, View} from 'react-native';
+import moment from 'moment';
 
 import Money from './Money';
 
@@ -20,6 +21,8 @@ const Transaction = ({id, date, status, value, onPress}) => {
       sign = '';
   }
 
+  const relativeDate = moment.unix(date).fromNow();
+
   return (
     <TouchableOpacity onPress={onPress} style={[styles.root]}>
       <View style={styles.icon} />
@@ -31,7 +34,7 @@ const Transaction = ({id, date, status, value, onPress}) => {
           </Text>
         </View>
         <View style={styles.row}>
-          <Text>{date}</Text>
+          <Text>{relativeDate}</Text>
           <Text>
             <Money value={value} currency="USD" />
           </Text>

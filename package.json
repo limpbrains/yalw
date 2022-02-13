@@ -12,6 +12,7 @@
   "dependencies": {
     "@synonymdev/blocktank-client": "^0.0.21",
     "@synonymdev/react-native-lightning": "^0.0.37",
+    "moment": "^2.29.1",
     "react": "17.0.2",
     "react-native": "0.67.2",
     "react-redux": "^7.2.6",

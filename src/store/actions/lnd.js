@@ -7,9 +7,9 @@ import {
 } from '../constants';
 
 import lnd, {
-  ENetworks,
+  // ENetworks,
   LndConf,
-  ss_lnrpc,
+  // ss_lnrpc,
 } from '@synonymdev/react-native-lightning';
 
 const lndConf = new LndConf('testnet', {

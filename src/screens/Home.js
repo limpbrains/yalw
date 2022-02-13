@@ -1,13 +1,11 @@
 import React, {useEffect} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
   useColorScheme,
   View,
-  Button,
   FlatList,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
@@ -27,9 +25,14 @@ const Home = () => {
     dispatch(actions.lnd.mockBalanceProgress());
   }, [dispatch]);
 
-    const renderTransaction = tx => <Transaction {...tx.item} onPress={() => {
-        console.info(tx.item.id)
-    }} />;
+  const renderTransaction = tx => (
+    <Transaction
+      {...tx.item}
+      onPress={() => {
+        console.info(tx.item.id);
+      }}
+    />
+  );
 
   return (
     <SafeAreaView>
@@ -38,7 +41,9 @@ const Home = () => {
       <View>
         <Text style={styles.title}>Wallet</Text>
         <Text>Total balance</Text>
-        <Text><Money value={lnd.balance} /></Text>
+        <Text>
+          <Money value={lnd.balance} />
+        </Text>
         <Text>
           synched to chain:{' '}
           {lnd.synchProgress === 100 ? '✅' : lnd.synchProgress}

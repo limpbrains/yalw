@@ -1,6 +1,3 @@
-import React, {useEffect} from 'react';
-import {Text, TouchableOpacity, StyleSheet, View} from 'react-native';
-
 const Money = ({value, currency = 'SATS'}) => {
   let number = value;
   if (currency === 'BTC') {
@@ -10,7 +7,7 @@ const Money = ({value, currency = 'SATS'}) => {
     );
     number = number.replace('BTC', '₿');
   } else if (currency === 'USD') {
-    number = number / 10000000 * 40000;
+    number = (number / 10000000) * 40000;
     number = Intl.NumberFormat('en-US', {style: 'currency', currency}).format(
       number,
     );
